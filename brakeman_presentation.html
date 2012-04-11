@@ -1,0 +1,106 @@
+<head>
+  <title>ATLRUG April 2012 - Brakeman: Static Analysis Security Scanner for Rails apps</title>
+  <meta content="ATLRUG April 2012 - Brakeman: Static Analysis Security Scanner for Rails apps" name="description" />
+  <meta content="David Worth - dave@highgroove.com" name="author" />
+  <meta content="width=1024, user-scalable=no" name="viewport" />
+  <link href="core/deck.core.css" rel="stylesheet" />
+  <link href="dave.css" rel="stylesheet" />
+  <link href="extensions/status/deck.status.css" rel="stylesheet" />
+  <link href="themes/style/swiss.css" rel="stylesheet" />
+  <link href="themes/transition/horizontal-slide.css" rel="stylesheet" />
+  <script src="js/modernizr.custom.js"></script>
+  <script src="js/jquery-1.7.2.min.js"></script>
+  <script src="core/deck.core.js"></script>
+  <script type="text/javascript">$(function() { $.deck('.slide'); });</script>
+</head>
+<body class="deck-container">
+  <section class="slide">
+    <h2>Brakeman</h2>
+    <h3>Static Analysis Security Scanner for Rails apps</h3>
+    <h4>David Worth</h4>
+    <h4>dave@highgroove.com</h4>
+    <img alt="Highgroove Studios" class="hglogo" src="highgroove.png" />
+  </section>
+  <section class="slide">
+    <h2>Why a security scanner just for Rails Apps?</h2>
+    <h3 class="slide center">Because of this guy:<img alt="Egor" src="egor.png" />
+    </h3>
+    <h3 class="slide">Wait... who?</h3>
+    <h4 class="slide">He kinda owned Github but they were cool about it</h4>
+  </section>
+  <section class="slide">
+    <h2>Types of Security Scanners:</h2>
+    <ul>
+      <li class="slide">
+        <h3>Active Scanners</h3>
+        <p>Active scanners operaton on a running application and attempt to discover and/or exploit vulnerabilities</p>
+        <ul class="slide">
+          <li>webrat</li>
+          <li>skipfish</li>
+          <li>w3af</li>
+        </ul>
+      </li>
+      <li class="slide">
+        <h3>Static Analysis Scanners</h3>
+        <p>Attempt to discover vulnerabilities by analyzing an application at rest</p>
+        <ul>
+          <li>Brakeman</li>
+          <li>Gaggillions of others but not for rails apps</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+  <section class="slide">
+    <h1>Introducing Brakeman</h1>
+  </section>
+  <section class="slide">
+    <h2>Brakeman</h2>
+    <ul>
+      <li>Released August 27, 2010 by Justin aka PresidentBeef</li>
+      <li>Under very constant development with many contributors</li>
+      <li>Understands Rails 2 and 3</li>
+      <li>Written in Ruby 1.8 compatible syntax for maximum flexibility<ul>
+          <li>separate scanners for Ruby 1.8 and 1.9 parsing</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+  <section class="slide">
+    <h2>So what does it do?</h2>
+    <div class="slide">
+      <h3>Find 0-day in your apps before others do</h3>
+    </div>
+    <div class="slide">
+      <h3>"Standard" web vulnerabilities</h3>
+      <ul>
+        <li>XSS, CSRF, SQLi</li>
+        <li>User-controlled data (Command Injection, unsafe redirects, dynamic render paths, "dangerous evaluation", file-access)</li>
+        <li>Session and Authentication settings</li>
+      </ul>
+    </div>
+    <div class="slide">
+      <h3>Rails-specific vulnerabilities</h3>
+      <ul>
+        <li>Mass-Assignment (aka Github vuln)</li>
+        <li>Unsafe model validators</li>
+      </ul>
+    </div>
+  </section>
+  <section class="slide">
+    <h2>Brakeman on the web</h2>
+    <ul>
+      <li>More Info<ul>
+          <li>
+            <a href="http://www.brakemanscanner.org">http://www.brakemanscanner.org</a>
+          </li>
+          <li>
+            <a href="http://github.com/presidentbeef/brakeman">http://github.com/presidentbeef/brakeman</a>
+          </li>
+          <li>
+            <a href="https://twitter.com/#!/brakeman">@brakeman</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</body>

@@ -1,0 +1,108 @@
+head
+  title="ATLRUG April 2012 - Brakeman: Static Analysis Security Scanner for Rails apps"
+  meta name="description" content="ATLRUG April 2012 - Brakeman: Static Analysis Security Scanner for Rails apps"
+  meta name="author"      content="David Worth - dave@highgroove.com"
+  meta name="viewport"    content="width=1024, user-scalable=no"
+
+  link rel="stylesheet" href="core/deck.core.css"
+  link rel="stylesheet" href="dave.css"
+  link rel="stylesheet" href="extensions/status/deck.status.css"
+  link rel="stylesheet" href="themes/style/swiss.css"
+  link rel="stylesheet" href="themes/transition/horizontal-slide.css"
+
+  script src="js/modernizr.custom.js"
+  script src="js/jquery-1.7.2.min.js"
+  script src="core/deck.core.js"
+  javascript:
+    $(function() { $.deck('.slide'); });
+
+body.deck-container
+
+  section.slide
+    h2 Brakeman
+    h3 Static Analysis Security Scanner for Rails apps
+    h4 David Worth
+    h4 dave@highgroove.com
+    img.hglogo src="highgroove.png" alt="Highgroove Studios"
+
+  section.slide
+    h2 Why a security scanner just for Rails Apps?
+    h3.slide.center
+      | Because of this guy:
+      img src="egor.png" alt="Egor"
+    h3.slide Wait... who?
+    h4.slide He kinda owned Github but they were cool about it
+
+  section.slide
+    h2 Types of Security Scanners:
+    ul
+      li.slide
+        h3 Active Scanners
+        p Active scanners operaton on a running application and attempt to discover and/or exploit vulnerabilities
+        ul.slide
+          li webrat
+          li skipfish
+          li w3af
+      li.slide
+        h3 Static Analysis Scanners
+        p Attempt to discover vulnerabilities by analyzing an application at rest
+        ul
+          li Brakeman
+          li Gaggillions of others but not for rails apps
+
+  section.slide
+    h1 Introducing Brakeman
+
+  section.slide
+    h2 Brakeman
+    ul
+      li Released August 27, 2010 by Justin aka PresidentBeef
+      li Under very constant development with many contributors
+      li Understands Rails 2 and 3
+      li
+        | Written in Ruby 1.8 compatible syntax for maximum flexibility
+        ul
+          li separate scanners for Ruby 1.8 and 1.9 parsing
+
+  section.slide
+    h2 So what does it do?
+    .slide
+      h3 Find 0-day in your apps before others do!
+    .slide
+      h3 "Standard" web vulnerabilities
+      ul
+        li XSS, CSRF, SQLi
+        li User-controlled data (Command Injection, unsafe redirects, dynamic render paths, "dangerous evaluation", file-access)
+        li Session and Authentication settings
+    .slide
+      h3 Rails-specific vulnerabilities
+      ul
+        li Mass-Assignment (aka the Github vulnerability)
+        li Unsafe model validators
+    .slide
+      p All of these are covered in the Rails Security Guide and at length on the web as well as in the Brakeman docs
+
+  section.slide
+    h3 Does it work?
+    .slide
+      h3 YEP!
+    .slide
+      h4 At Highgroove a remote vulnerability was found on first running.
+
+  section.slide
+    h2 Brakeman on the web
+    ul
+      li
+        | More Info
+        ul
+          li
+            a href="http://www.brakemanscanner.org" http://www.brakemanscanner.org
+          li
+            a href="http://github.com/presidentbeef/brakeman" http://github.com/presidentbeef/brakeman
+          li
+            a href="https://twitter.com/#!/brakeman" @brakeman
+    h2 Other Resources
+    ul
+      li
+        a href="http://guides.rubyonrails.org/security.html" Ruby on Rails Security Guide
+
