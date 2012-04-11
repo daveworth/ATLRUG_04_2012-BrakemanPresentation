@@ -13,6 +13,7 @@ head
   script src="js/modernizr.custom.js"
   script src="js/jquery-1.7.2.min.js"
   script src="core/deck.core.js"
+  script src="extensions/status/deck.status.js"
   javascript:
     $(function() { $.deck('.slide'); });
 
@@ -20,41 +21,49 @@ body.deck-container
 
   section.slide
     h2 Brakeman
-    h3 Static Analysis Security Scanner for Rails apps
-    h4 David Worth
-    h4 dave@highgroove.com
+    h3 Static Analysis Security Scanner for Rails Applications
+    br
+    h4 David Worth - dave@highgroove.com
     img.hglogo src="highgroove.png" alt="Highgroove Studios"
 
   section.slide
     h2 Why a security scanner just for Rails Apps?
     h3.slide.center
       | Because of this guy:
+      br
       img src="egor.png" alt="Egor"
     h3.slide Wait... who?
-    h4.slide He kinda owned Github but they were cool about it
+    h4.slide He kinda owned Github* but they were cool about it
+    h5.slide oh, and he gained push commits to Rails but didn't use it for Evil.
 
   section.slide
     h2 Types of Security Scanners:
     ul
       li.slide
         h3 Active Scanners
-        p Active scanners operaton on a running application and attempt to discover and/or exploit vulnerabilities
+        p Active scanners operate on on a running application and attempt to discover and/or exploit vulnerabilities
         ul.slide
-          li webrat
-          li skipfish
-          li w3af
+          li
+            a href="http://code.google.com/p/skipfish/" skipfish
+            |  by Michael Zalewski
+          li
+            a href="http://w3af.sourceforge.net/" Web Application Attack and Audit Framework (w3af)
       li.slide
         h3 Static Analysis Scanners
-        p Attempt to discover vulnerabilities by analyzing an application at rest
+        p
+          | Attempt to discover 
+          strike features
+          |  vulnerabilities by analyzing an application at rest
         ul
           li Brakeman
-          li Gaggillions of others but not for rails apps
+          li Gaggillions of others, primarily for "static" languages, but not for rails apps!
 
   section.slide
     h1 Introducing Brakeman
 
   section.slide
     h2 Brakeman
+    h3 History and details:
     ul
       li Released August 27, 2010 by Justin aka PresidentBeef
       li Under very constant development with many contributors
@@ -67,7 +76,7 @@ body.deck-container
   section.slide
     h2 So what does it do?
     .slide
-      h3 Find 0-day in your apps before others do!
+      h3 Finds 0-day in your apps before others do!
     .slide
       h3 "Standard" web vulnerabilities
       ul
@@ -83,11 +92,73 @@ body.deck-container
       p All of these are covered in the Rails Security Guide and at length on the web as well as in the Brakeman docs
 
   section.slide
-    h3 Does it work?
+    h2 Does it work?
     .slide
       h3 YEP!
     .slide
-      h4 At Highgroove a remote vulnerability was found on first running.
+      h4 At Highgroove a remote vulnerability was found on first running
+    .slide
+      h4 ... and patched 30s later.
+
+  section.slide
+    h2 How do I use it?
+    ol
+      li
+        | Install the gem
+        pre ~/rails_app $ gem install brakeman
+      li
+        | Run the scanner
+        pre
+          | ~/rails_app $ brakeman
+            [Notice] Detected Rails 3 application
+            Loading scanner...
+            [Notice] Using Ruby 1.9.3. Please make sure this matches the one used to run your Rails application.
+            Processing application in /Users/dworth/Documents/my_projects/badapp
+            Processing configuration...
+            [Notice] Escaping HTML by default
+            Processing gems...
+              # ... SNIP ...
+            Indexing call sites...
+            Running checks in parallel...
+             - CheckBasicAuth
+             - CheckCrossSiteScripting
+             # ... SNIP ...
+
+  section.slide
+    h2 How do I use it? (con't)
+    ol start=3
+      li
+        | Take action!  Read the console:
+        pre
+          | +BRAKEMAN REPORT+
+            Application path: /Users/dworth/Documents/my_projects/badapp
+            Rails version: 3.2.1
+            Generated at 2012-04-11 16:17:02 -0400
+            Checks run: BasicAuth, CrossSiteScripting, DefaultRoutes, # ... SNIP ...
+            
+            +SUMMARY+
+            +---------------------------------------------+
+            |          Scanned/Reported           | Total |
+            +---------------------------------------------+
+            | Controllers                         |     2 |
+            | Models                              |     1 |
+            | Templates                           |     1 |
+            | Errors                              |     0 |
+            | Security Warnings                   | 2 (1) |
+            | Ignored warnings due to annotations |     0 |
+            +---------------------------------------------+
+            
+            # ... SNIP ...
+
+  section.slide
+    h2 How do I use it? (con't)
+    ol start=3
+      li
+        | Take action! (con't)
+        ul
+          li
+            | output to HTML
+            pre -f html -o brakeman_report.html
 
   section.slide
     h2 Brakeman on the web
@@ -105,4 +176,12 @@ body.deck-container
     ul
       li
         a href="http://guides.rubyonrails.org/security.html" Ruby on Rails Security Guide
+      li
+        a href="https://www.owasp.org/index.php/Main_Page" OWASP - The Open Web Application Security Project
+      li
+        a href="https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation" Github's response to Egor's hack
 
+p.deck-status
+  span.deck-status-current
+  |  /
+  span.deck-status-total
